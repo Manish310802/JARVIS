@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
-import Header from "../dashboard/_components/Header";
 import { CheckCircle, Mic, Bot, ThumbsUp } from "lucide-react";
 import Image from "next/image";
+import Footer from "@/app/dashboard/_components/Footer";
+import Header from "@/app/dashboard/_components/Header";
+
 
 function HowItWorksPage() {
   return (
@@ -86,6 +88,7 @@ function HowItWorksPage() {
           </div>
         </section>
       </div>
+      <Footer />
     </>
   );
 }

@@ -13,7 +13,7 @@ import { initializeChatSession } from "@/utils/GeminiAIModel";
 import { UserAnswer } from "@/utils/schema"; // ✅ Importing Drizzle ORM schema
 import { MockInterview } from "@/utils/schema";
 
-function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, interviewData }) {
+function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, interviewData, onAnswerRecorded  }) {
   const [userAnswer, setUserAnswer] = useState("");
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
@@ -42,6 +42,8 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
       UpdateUserAnswer();
     }
   }, [userAnswer]);
+
+  
 
   const StartStopRecording = async () => {
     if (isRecording) {
@@ -90,6 +92,11 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
         toast.success("✅ Answer Recorded Successfully!");
         setUserAnswer("");
         setResults([]);
+
+        if (onAnswerRecorded) {
+          onAnswerRecorded();  // ➡️ Increase attempted questions after success
+        }
+        
       } catch (jsonParseError) {
         console.error("❌ Invalid JSON format:", jsonParseError);
         toast.error("Failed to parse AI response. Please try again.");
@@ -115,15 +122,23 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
           }}
         />
       </div>
-      <Button disabled={loading} variant="outline" className="my-10" onClick={StartStopRecording}>
-        {isRecording ? (
-          <h2 className="text-red-600 flex gap-2">
-            <Mic /> Stop Recording
-          </h2>
-        ) : (
-          "Record Answer"
-        )}
-      </Button>
+      {/* Record Button */}
+    <Button
+      disabled={loading}
+      variant="outline"
+      className="my-8 px-8 py-3 text-base font-semibold rounded-full shadow hover:shadow-md transition-all"
+      onClick={StartStopRecording}
+    >
+      {isRecording ? (
+        <span className="text-red-600 flex items-center gap-2">
+          <Mic className="h-5 w-5" /> Stop Recording
+        </span>
+      ) : (
+        <span className="flex items-center gap-2 text-cyan-600">
+          <Mic className="h-5 w-5" /> Start Recording
+        </span>
+      )}
+    </Button>
     </div>
   );
 }

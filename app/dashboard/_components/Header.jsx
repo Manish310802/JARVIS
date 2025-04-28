@@ -13,7 +13,7 @@ function Header() {
   }, [path]);
 
   return (
-    <div className="flex p-4 items-center justify-between bg-secondary shadow-md">
+    <div className="flex p-4 items-center justify-between bg-gray-200 shadow-md">
       <Image src="/logo.svg" alt="logo" width={160} height={100} />
       <ul className="hidden md:flex gap-6">
         <li>
@@ -24,6 +24,16 @@ function Header() {
             }`}
           >
             Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/Progress"
+            className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${
+              path === "/Progress" ? "text-primary font-bold" : ""
+            }`}
+          >
+            Progress
           </Link>
         </li>
         <li>

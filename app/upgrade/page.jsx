@@ -2,11 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Header from "../dashboard/_components/Header";
+import Footer from "@/app/dashboard/_components/Footer";
+import Header from "@/app/dashboard/_components/Header";
 
 function UpgradePage() {
   return (
     <>
+    
       <Header />
     <div className="px-6 md:px-20 py-10">
       {/* HERO SECTION */}
@@ -100,6 +102,7 @@ function UpgradePage() {
         </div>
       </div>
     </div>
+    <Footer />
     </>
   );
 }

@@ -16,9 +16,15 @@ const params = useParams(); // ✅ Get params from Next.js
 const interviewId = params?.interviewId || "";
 
 
+
 const [interviewData, setInterviewData] = useState();
 const [mockInterviewQuestion,setMockInterviewQuestion] = useState([]);
 const [activeQuestionIndex,setActiveQuestionIndex] = useState(0);
+const [timeLeft, setTimeLeft] = useState(60); // 60 seconds for each question
+const [questionsAttempted, setQuestionsAttempted] = useState(0);
+
+
+
 
 useEffect(() => {
     if (!interviewId || typeof interviewId !== "string") {
@@ -28,6 +34,26 @@ useEffect(() => {
     console.log("Fetching interview for ID:", interviewId);
     GetInterviewData(interviewId);
 }, [interviewId]);
+
+useEffect(() => {
+    setTimeLeft(60); // Reset timer on new question
+  }, [activeQuestionIndex]);
+  
+  useEffect(() => {
+    if (timeLeft === 0) {
+      if (activeQuestionIndex < mockInterviewQuestion.length - 1) {
+        setActiveQuestionIndex((prev) => prev + 1); // Move to next question
+      }
+    }
+    const timer = setTimeout(() => {
+      if (timeLeft > 0) {
+        setTimeLeft(timeLeft - 1);
+      }
+    }, 1000);
+  
+    return () => clearTimeout(timer);
+  }, [timeLeft]);
+  
 
 const GetInterviewData = async (interviewId) => {
     try {
@@ -69,34 +95,76 @@ const GetInterviewData = async (interviewId) => {
 
     
     
-  return (
-    <div>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-            {/* Questions */}
-            <QuestionsSection 
-            mockInterviewQuestion={mockInterviewQuestion}
-            activeQuestionIndex={activeQuestionIndex}
-            />
-            {/* Video/ Audio Recording */}
-            <RecordAnswerSection
-            mockInterviewQuestion={mockInterviewQuestion}
-            activeQuestionIndex={activeQuestionIndex}
-            interviewData={interviewData}
-            />
+return (
+    <div className="p-5">
+      
+      {/* Timer Section */}
+<div className="flex items-center justify-center my-4">
+  <div className={`relative px-5 py-2 rounded-full shadow-md border ${timeLeft <= 10 ? "border-red-500 bg-red-50 animate-pulse" : "border-cyan-400 bg-cyan-50"}`}>
+    
+    <h2 className={`text-sm md:text-base font-semibold tracking-widest ${timeLeft <= 10 ? "text-red-600" : "text-cyan-600"}`}>
+      ⏳ {timeLeft < 10 ? `0${timeLeft}` : timeLeft}s
+    </h2>
+    
+    <div className={`absolute -top-2 -right-2 text-[10px] px-2 py-0.5 rounded-full font-bold shadow ${timeLeft <= 10 ? "bg-red-500 text-white" : "bg-cyan-500 text-white"}`}>
+      Timer
+    </div>
 
-        </div>
-        <div className='flex justify-end gap-6'>
-           {activeQuestionIndex>0&& <Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex-1)}>Previous Question</Button>}
-           {activeQuestionIndex!=mockInterviewQuestion?.length-1&& <Button onClick={()=>setActiveQuestionIndex(activeQuestionIndex+1)}>Next Question</Button>}
-           {activeQuestionIndex === mockInterviewQuestion?.length - 1 && interviewData?.mockId && (
-  <Link href={`/dashboard/interview/${interviewData.mockId}/feedback`}>
-    <Button>End Interview</Button>
-  </Link>
+  </div>
+</div>
+
+
+      
+
+
+      {/* Main Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <QuestionsSection
+          mockInterviewQuestion={mockInterviewQuestion}
+          activeQuestionIndex={activeQuestionIndex}
+        />
+        <RecordAnswerSection
+          mockInterviewQuestion={mockInterviewQuestion}
+          activeQuestionIndex={activeQuestionIndex}
+          interviewData={interviewData}
+          onAnswerRecorded={() => setQuestionsAttempted(prev => prev + 1)} // 🆕
+          questionsAttempted={questionsAttempted} // 🆕 optional if needed
+        />
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="flex justify-end gap-6 mt-10">
+        {activeQuestionIndex !== mockInterviewQuestion.length - 1 && (
+          <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>
+            Next Question
+          </Button>
+        )}
+        {activeQuestionIndex === mockInterviewQuestion?.length - 1 && interviewData?.mockId && (
+  <Button
+  disabled={questionsAttempted < 0} // Minimum 2 questions must be attempted
+  onClick={() => {
+    if (questionsAttempted < 2) {
+      alert(`Please attempt at least 2 questions before ending the interview.`);
+      return;
+    }
+  }}
+>
+  {/* Use Link to wrap the Button when conditions are met */}
+  {questionsAttempted >= 2 ? (
+    <Link href={`/dashboard/interview/${interviewData.mockId}/feedback`}>
+      End Interview
+    </Link>
+  ) : (
+    "End Interview"
+  )}
+</Button>
 )}
 
-        </div>
+      </div>
+
     </div>
-  )
+  );
+  
 }
 
 export default StartInterview

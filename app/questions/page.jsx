@@ -2,15 +2,20 @@
 
 import React from "react";
 import Image from "next/image";
-import Header from "../dashboard/_components/Header";
 import { useRouter } from "next/navigation";
+import Footer from "@/app/dashboard/_components/Footer";
+import Header from "@/app/dashboard/_components/Header";
+
 
 export default function QuestionsPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] text-gray-800">
+    <>
       <Header />
+ 
+    <div className="min-h-screen bg-[#f8f9fa] text-gray-800">
+      
 
       {/* Hero Section */}
       <section className="px-6 py-12 text-center">
@@ -151,5 +156,8 @@ export default function QuestionsPage() {
         </div>
       </section>
     </div>
+      
+        <Footer />
+        </>
   );
 }

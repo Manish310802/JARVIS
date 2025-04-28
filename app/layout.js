@@ -2,6 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import dynamic from 'next/dynamic';
+
+
+
 import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
@@ -24,10 +27,12 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <Toaster />
-        {children}
+        <main className="flex-grow">
+            {children}
+         </main>
       </body>
     </html>
     </ClerkProvider>
