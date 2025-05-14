@@ -10,6 +10,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation"; // ✅ Import useParams() instead of props
 
 
+
+
 function Interview() {
    
     const params = useParams(); // ✅ Get params from Next.js
@@ -72,6 +74,7 @@ function Interview() {
     
 
     return (
+       
         <div className="my-10">
             <h2 className="font-bold text-2xl">Let's Get Started</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -104,7 +107,8 @@ function Interview() {
                             onUserMedia={() => setWebcamEnabled(true)}
                             onUserMediaError={() => setWebcamEnabled(false)}
                             mirrored={true}
-                            style={{ height: 300, width: 300 }}
+                            videoConstraints={{ facingMode: "user" }}
+                            style={{ height: 350, width: "100%", zIndex: 10 }}
                         />
                     ) : (
                         <>
@@ -123,6 +127,7 @@ function Interview() {
 
             </div>
         </div>
+        
     );
 }
 

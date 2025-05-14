@@ -150,7 +150,7 @@ return (
   }}
 >
   {/* Use Link to wrap the Button when conditions are met */}
-  {questionsAttempted >= 2 ? (
+  {questionsAttempted >= 1 ? (
     <Link href={`/dashboard/interview/${interviewData.mockId}/feedback`}>
       End Interview
     </Link>

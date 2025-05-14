@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.39.2",
+    "face-api.js": "^0.22.2",
     "framer-motion": "^12.9.2",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.3",
@@ -43,7 +44,8 @@
     "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "wavesurfer.js": "^7.9.5"
   },
   "devDependencies": {
     "drizzle-kit": "^0.30.4",

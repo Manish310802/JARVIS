@@ -185,7 +185,7 @@ function AddNewInterview() {
                             <div className="flex gap-5 justify-end mt-4">
                                 <Button type="button" variant="ghost" onClick={() => setOpenDialog(false)}>Cancel</Button>
                                 <Button type="submit" disabled={loading}>
-                                    {loading ? <><LoaderCircle className="animate-spin" /> Generating from AI...</> : "Start Interview"}
+                                    {loading ? <><LoaderCircle className="animate-spin" /> Initializing Interview...</> : "Start Interview"}
                                 </Button>
                             </div>
                         </form>

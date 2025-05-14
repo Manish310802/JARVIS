@@ -1,41 +1,63 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JARVIS - AI Powered Mock Interview Trainer
 
-## Getting Started
+JARVIS is an AI-powered platform that helps candidates practice mock interviews by generating real-time questions, analyzing answers, and providing detailed feedback based on AI models.
 
-First, run the development server:
+Built with [Next.js](https://nextjs.org), [Drizzle ORM](https://orm.drizzle.team/), and integrated AI services for natural conversation and feedback analysis.
+
+---
+
+## 🚀 Features
+
+- AI-generated interview questions based on selected job role, experience, and description
+- Voice-based answering with speech-to-text
+- Instant AI feedback on your performance
+- Detailed feedback review page
+- Authentication (Clerk)
+- Modern, premium frontend UI
+
+---
+
+## 🛠️ Tech Stack
+
+- Next.js 14 (App Router)
+- TailwindCSS
+- Drizzle ORM + Neon Database
+- OpenAI / Gemini AI models
+- Clerk Authentication
+- Vercel (Hosting)
+
+---
+
+## 🧩 Getting Started
+
+First, clone the project and install dependencies:
 
 ```bash
+git clone https://github.com/your-username/jarvis.git
+cd jarvis
+npm install
+Then, run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📚 Learn More
+Next.js Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Drizzle ORM Docs
 
-## Learn More
+Clerk Docs
 
-To learn more about Next.js, take a look at the following resources:
+📦 Deploy
+Deploy seamlessly with Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Check out Next.js deployment documentation for more details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📸 Screenshots
+(optional: add screenshots of your project here)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# JARVIS
-JARVIS is an AI powered mock interview trainer.
->>>>>>> d379ae2a4965b13b69f12fbb36d09bbcd26952a1
+📬 Contact
+If you like the project or want to collaborate, feel free to reach out!
+Manish Jangid
+MO. 9284965906
+manishjangid3892@gmail.com

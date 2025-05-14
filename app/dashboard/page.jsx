@@ -12,6 +12,8 @@ import AddNewInterview from './_components/AddNewInterview';
 import InterviewList from './_components/InterviewList';
 
 
+
+
 export default function Dashboard() {
   const { user } = useUser();
   const [interviews, setInterviews] = useState([]);
@@ -79,6 +81,7 @@ export default function Dashboard() {
   
 
   return (
+    
     <div className="min-h-screen pt-11 ">
 <div className="mt-100  bg-gray-50 ">
 <div className="max-w-7xl mx-auto py-12 px-6">
@@ -133,5 +136,6 @@ export default function Dashboard() {
       </div>
     </div>
     </div>
+    
   );
 }

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Linkedin, Github, Twitter } from "lucide-react"; // Correct imports
+import { Linkedin, Github, Twitter, Instagram } from "lucide-react"; // Correct imports
 
 function Footer() {
   return (
@@ -28,8 +28,8 @@ function Footer() {
           <a href="https://github.com/Manish310802" target="_blank" rel="noreferrer" className="hover:text-primary">
             <Github size={20} /> {/* Correct name for GitHub */}
           </a>
-          <a href="https://twitter.com/yourhandle" target="_blank" rel="noreferrer" className="hover:text-primary">
-            <Twitter size={20} /> {/* Correct name for Twitter */}
+          <a href="https://www.instagram.com/lifeofmanish_07/" target="_blank" rel="noreferrer" className="hover:text-primary">
+            <Instagram size={20} /> {/* Correct name for Twitter */}
           </a>
         </div>
 

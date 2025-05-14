@@ -25,6 +25,8 @@ import html2pdf from 'html2pdf.js'; // 👈 Add this import
 
 
 
+
+
 // Helper function to pick red/amber/green color
 const getColorForPercentage = (pct) => {
   if (pct < 30) return "#ef4444";   // red-500
@@ -147,7 +149,7 @@ function Feedback() {
         filename:     'Feedback_Report.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
         pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }, // 👈 handle page breaks properly
       };
     
@@ -188,7 +190,6 @@ function Feedback() {
  
 
   return (
-
     
     <div className="max-w-screen-xl mx-auto px-6 sm:px-12 py-10">
       <ToastContainer />
@@ -376,6 +377,7 @@ function Feedback() {
         </>
       )}
     </div>
+   
   );
 }
 
